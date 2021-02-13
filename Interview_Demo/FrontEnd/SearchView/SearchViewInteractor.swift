@@ -7,3 +7,23 @@
 //
 
 import Foundation
+
+final class SearchViewInteractor: SearchViewIneractorable {
+    
+    
+    func getPhotos() {
+        
+    }
+    
+    func getSearchResults(searchTerm: String) {
+        
+    }
+    
+    func cancelImageDownload(photo: PhotoViewModel) {
+        
+    }
+    
+    
+}
+
+

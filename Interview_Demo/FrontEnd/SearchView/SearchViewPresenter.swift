@@ -8,3 +8,20 @@
 
 import Foundation
 
+final class SearchViewPresenter: SearchViewPresentable {
+    
+    unowned let viewController: SearchViewControllable
+    
+    init(controller: SearchViewControllable) {
+        self.viewController = controller
+    }
+    
+    func updatePhotos(photos: [PhotoViewModel]) {
+        self.viewController.updatePhotos(photos: photos)
+    }
+    
+    func updateSearchResults(photos: [PhotoViewModel]) {
+    }
+    
+}
+

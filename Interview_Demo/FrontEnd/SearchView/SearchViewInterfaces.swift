@@ -8,13 +8,13 @@
 
 import Foundation
 
-protocol SearchViewControllable {
+protocol SearchViewControllable: class {
     func updatePhotos(photos: [PhotoViewModel])
 }
 
 protocol SearchViewPresentable {
-    func updatePhotos(photos: [PhotoModel])
-    func updateSearchResults(photos: [PhotoModel])
+    func updatePhotos(photos: [PhotoViewModel])
+    func updateSearchResults(photos: [PhotoViewModel])
 }
 
 protocol SearchViewIneractorable {
