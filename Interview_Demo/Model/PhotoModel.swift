@@ -8,9 +8,10 @@
 
 import Foundation
 
-struct PhotoModel {
-    let photoId : String
-    let photoSecret : String
-    let photoServerId: String
-    let photoImageUrl: String
+struct PhotoModel: Codable {
+    let id : String
+    let secret : String
+    let server: String
+    let title: String
+    let photoImageUrl: String?
 }

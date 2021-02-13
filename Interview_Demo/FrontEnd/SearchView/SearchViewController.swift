@@ -17,7 +17,7 @@ final class SearchViewController: UIViewController {
     private(set) var viewModel : SearchViewModel = SearchViewModel(photos: [])
     
     private var numberOfColumns: CGFloat = 3
-    private let interactor: SearchViewIneractorable = SearchViewInteractor()
+    private let interactor: SearchViewIneractorable = SearchViewInteractor(service: PhotoServiceManager())
     private let localize: SearchViewLocalizeStrings = SearchViewLocalizeStrings()
     
     private(set) var searchBarController: UISearchController? = nil

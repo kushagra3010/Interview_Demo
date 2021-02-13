@@ -30,7 +30,17 @@ final class PhotoServiceManager : PhotoServiceInterface {
         
         let serviceReq = ServiceRequestModel(request: request)
         self.serviceManager.getRequest(req: serviceReq) { (response, error) in
-            completionBlock([],error)
+            
+            do {
+                if let responseData = response?.data {
+                    let searchResult = try JSONDecoder().decode(SearchResultModel.self, from: responseData)
+                    completionBlock(searchResult.photos?.photo ?? [],error)
+                } else {
+                    completionBlock(nil, error)
+                }
+            } catch {
+                completionBlock(nil, error)
+            }
         }
     }
     

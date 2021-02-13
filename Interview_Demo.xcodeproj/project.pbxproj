@@ -30,6 +30,7 @@
 		A0EE557025D85A3F00A9D38A /* SearchViewCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE556F25D85A3F00A9D38A /* SearchViewCollectionCell.swift */; };
 		A0EE557225D869DB00A9D38A /* PhotoServiceInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE557125D869DB00A9D38A /* PhotoServiceInterface.swift */; };
 		A0EE557425D869F300A9D38A /* PhotoServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE557325D869F300A9D38A /* PhotoServiceManager.swift */; };
+		A0EE557625D872F700A9D38A /* SearchResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE557525D872F700A9D38A /* SearchResultModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		A0EE556F25D85A3F00A9D38A /* SearchViewCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCollectionCell.swift; sourceTree = "<group>"; };
 		A0EE557125D869DB00A9D38A /* PhotoServiceInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoServiceInterface.swift; sourceTree = "<group>"; };
 		A0EE557325D869F300A9D38A /* PhotoServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoServiceManager.swift; sourceTree = "<group>"; };
+		A0EE557525D872F700A9D38A /* SearchResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				A078917F25D7FB1E0037BFA4 /* PhotoModel.swift */,
+				A0EE557525D872F700A9D38A /* SearchResultModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 			files = (
 				A078917825D7F57B0037BFA4 /* SearchViewController.swift in Sources */,
 				A01876CB25D710CC008430C6 /* AppDelegate.swift in Sources */,
+				A0EE557625D872F700A9D38A /* SearchResultModel.swift in Sources */,
 				A0EE557225D869DB00A9D38A /* PhotoServiceInterface.swift in Sources */,
 				A078917C25D7FAB70037BFA4 /* SearchViewInterfaces.swift in Sources */,
 				A0CA5A7725D800A7006DB725 /* ServiceConstants.swift in Sources */,

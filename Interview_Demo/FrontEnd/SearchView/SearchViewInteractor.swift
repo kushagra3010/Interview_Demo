@@ -10,9 +10,16 @@ import Foundation
 
 final class SearchViewInteractor: SearchViewIneractorable {
     
+    private let service: PhotoServiceInterface
+    
+    init(service: PhotoServiceInterface) {
+        self.service = service
+    }
     
     func getPhotos() {
-        
+        self.service.getPhotos(searchTerm: "nature") { (photos, error) in
+            print("\(photos)")
+        }
     }
     
     func getSearchResults(searchTerm: String) {
