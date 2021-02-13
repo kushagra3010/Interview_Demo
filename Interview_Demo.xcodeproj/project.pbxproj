@@ -27,6 +27,9 @@
 		A0CA5A8525D80E31006DB725 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0CA5A8225D80E31006DB725 /* LaunchScreen.storyboard */; };
 		A0CA5A8825D80E3C006DB725 /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = A0CA5A8625D80E3C006DB725 /* Localization.strings */; };
 		A0CA5A8A25D80FC7006DB725 /* LocalizationUtilty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CA5A8925D80FC7006DB725 /* LocalizationUtilty.swift */; };
+		A0EE557025D85A3F00A9D38A /* SearchViewCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE556F25D85A3F00A9D38A /* SearchViewCollectionCell.swift */; };
+		A0EE557225D869DB00A9D38A /* PhotoServiceInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE557125D869DB00A9D38A /* PhotoServiceInterface.swift */; };
+		A0EE557425D869F300A9D38A /* PhotoServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE557325D869F300A9D38A /* PhotoServiceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,9 @@
 		A0CA5A8325D80E31006DB725 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0CA5A8725D80E3C006DB725 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localization.strings; sourceTree = "<group>"; };
 		A0CA5A8925D80FC7006DB725 /* LocalizationUtilty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationUtilty.swift; sourceTree = "<group>"; };
+		A0EE556F25D85A3F00A9D38A /* SearchViewCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCollectionCell.swift; sourceTree = "<group>"; };
+		A0EE557125D869DB00A9D38A /* PhotoServiceInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoServiceInterface.swift; sourceTree = "<group>"; };
+		A0EE557325D869F300A9D38A /* PhotoServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoServiceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +177,8 @@
 				A078918125D7FB750037BFA4 /* ServiceManagerInterface.swift */,
 				A078918325D7FB870037BFA4 /* ServiceManager.swift */,
 				A0CA5A7625D800A7006DB725 /* ServiceConstants.swift */,
+				A0EE557125D869DB00A9D38A /* PhotoServiceInterface.swift */,
+				A0EE557325D869F300A9D38A /* PhotoServiceManager.swift */,
 			);
 			path = BackEnd;
 			sourceTree = "<group>";
@@ -200,6 +208,7 @@
 				A078917D25D7FAD70037BFA4 /* SearchViewInteractor.swift */,
 				A0CA5A7225D7FEC7006DB725 /* SearchViewModel.swift */,
 				A0CA5A7925D80C66006DB725 /* SearchViewLocalizable.swift */,
+				A0EE556F25D85A3F00A9D38A /* SearchViewCollectionCell.swift */,
 			);
 			path = SearchView;
 			sourceTree = "<group>";
@@ -370,10 +379,13 @@
 			files = (
 				A078917825D7F57B0037BFA4 /* SearchViewController.swift in Sources */,
 				A01876CB25D710CC008430C6 /* AppDelegate.swift in Sources */,
+				A0EE557225D869DB00A9D38A /* PhotoServiceInterface.swift in Sources */,
 				A078917C25D7FAB70037BFA4 /* SearchViewInterfaces.swift in Sources */,
 				A0CA5A7725D800A7006DB725 /* ServiceConstants.swift in Sources */,
 				A0CA5A7525D80075006DB725 /* AppConstants.swift in Sources */,
+				A0EE557025D85A3F00A9D38A /* SearchViewCollectionCell.swift in Sources */,
 				A078917E25D7FAD70037BFA4 /* SearchViewInteractor.swift in Sources */,
+				A0EE557425D869F300A9D38A /* PhotoServiceManager.swift in Sources */,
 				A078918025D7FB1E0037BFA4 /* PhotoModel.swift in Sources */,
 				A078918425D7FB870037BFA4 /* ServiceManager.swift in Sources */,
 				A0CA5A7325D7FEC7006DB725 /* SearchViewModel.swift in Sources */,
