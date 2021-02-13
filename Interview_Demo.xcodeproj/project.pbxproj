@@ -21,6 +21,9 @@
 		A078918025D7FB1E0037BFA4 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A078917F25D7FB1E0037BFA4 /* PhotoModel.swift */; };
 		A078918225D7FB750037BFA4 /* ServiceManagerInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = A078918125D7FB750037BFA4 /* ServiceManagerInterface.swift */; };
 		A078918425D7FB870037BFA4 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A078918325D7FB870037BFA4 /* ServiceManager.swift */; };
+		A0CA5A7325D7FEC7006DB725 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CA5A7225D7FEC7006DB725 /* SearchViewModel.swift */; };
+		A0CA5A7525D80075006DB725 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CA5A7425D80075006DB725 /* AppConstants.swift */; };
+		A0CA5A7725D800A7006DB725 /* ServiceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CA5A7625D800A7006DB725 /* ServiceConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +64,9 @@
 		A078917F25D7FB1E0037BFA4 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		A078918125D7FB750037BFA4 /* ServiceManagerInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManagerInterface.swift; sourceTree = "<group>"; };
 		A078918325D7FB870037BFA4 /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
+		A0CA5A7225D7FEC7006DB725 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		A0CA5A7425D80075006DB725 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		A0CA5A7625D800A7006DB725 /* ServiceConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +155,7 @@
 		A078916D25D7F53A0037BFA4 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				A0CA5A7425D80075006DB725 /* AppConstants.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -158,6 +165,7 @@
 			children = (
 				A078918125D7FB750037BFA4 /* ServiceManagerInterface.swift */,
 				A078918325D7FB870037BFA4 /* ServiceManager.swift */,
+				A0CA5A7625D800A7006DB725 /* ServiceConstants.swift */,
 			);
 			path = BackEnd;
 			sourceTree = "<group>";
@@ -185,6 +193,7 @@
 				A078917925D7FA950037BFA4 /* SearchViewPresenter.swift */,
 				A078917B25D7FAB70037BFA4 /* SearchViewInterfaces.swift */,
 				A078917D25D7FAD70037BFA4 /* SearchViewInteractor.swift */,
+				A0CA5A7225D7FEC7006DB725 /* SearchViewModel.swift */,
 			);
 			path = SearchView;
 			sourceTree = "<group>";
@@ -344,9 +353,12 @@
 				A078917825D7F57B0037BFA4 /* SearchViewController.swift in Sources */,
 				A01876CB25D710CC008430C6 /* AppDelegate.swift in Sources */,
 				A078917C25D7FAB70037BFA4 /* SearchViewInterfaces.swift in Sources */,
+				A0CA5A7725D800A7006DB725 /* ServiceConstants.swift in Sources */,
+				A0CA5A7525D80075006DB725 /* AppConstants.swift in Sources */,
 				A078917E25D7FAD70037BFA4 /* SearchViewInteractor.swift in Sources */,
 				A078918025D7FB1E0037BFA4 /* PhotoModel.swift in Sources */,
 				A078918425D7FB870037BFA4 /* ServiceManager.swift in Sources */,
+				A0CA5A7325D7FEC7006DB725 /* SearchViewModel.swift in Sources */,
 				A078918225D7FB750037BFA4 /* ServiceManagerInterface.swift in Sources */,
 				A078917A25D7FA950037BFA4 /* SearchViewPresenter.swift in Sources */,
 				A01876CD25D710CC008430C6 /* SceneDelegate.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  ServiceManagerInterface.swift
+//  AppConstants.swift
 //  Interview_Demo
 //
 //  Created by Kushagara on 13/02/21.
@@ -8,5 +8,6 @@
 
 import Foundation
 
-protocol ServiceManagerInterface {
+final class AppConstants {
+    
 }

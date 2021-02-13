@@ -9,6 +9,8 @@
 import UIKit
 
 class SearchViewController: UIViewController {
+    
+    private(set) var viewModel : SearchViewModel = SearchViewModel(photos: [])
 
     override func viewDidLoad() {
         super.viewDidLoad()

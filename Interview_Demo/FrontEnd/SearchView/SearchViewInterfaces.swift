@@ -9,12 +9,16 @@
 import Foundation
 
 protocol SearchViewControllable {
-    
+    func updatePhotos(photos: [PhotoViewModel])
 }
 
 protocol SearchViewPresentable {
-    
+    func updatePhotos(photos: [PhotoModel])
+    func updateSearchResults(photos: [PhotoModel])
 }
+
 protocol SearchViewIneractorable {
-    
+    func getPhotos()
+    func getSearchResults(searchTerm: String)
+    func cancelImageDownload(photo: PhotoViewModel)
 }
