@@ -12,12 +12,14 @@ import UIKit
 final class PhotoServiceManager : PhotoServiceInterface {
     
     private let serviceManager: ServiceManagerInterface
-    private let imageCacheManager: PhotoCachingManager = PhotoCachingManager.shared
+    private let imageCacheManager: PhotoCachingManagerInterface
     private(set) var imageViewToTask: [UIImageView: (url: String,task: URLSessionTask)] = [:]
     private let imageDictionaryLock = NSLock()
     
-    init(serviceManager: ServiceManagerInterface = ServiceManager.shared) {
+    init(serviceManager: ServiceManagerInterface = ServiceManager.shared,
+         cacheManager: PhotoCachingManagerInterface = PhotoCachingManager.shared) {
         self.serviceManager = serviceManager
+        self.imageCacheManager = cacheManager
     }
     
     func getPhotos(searchTerm: String, completionBlock: @escaping ((_ photos: [PhotoModel]?, _ error: Error?) -> Void)) {

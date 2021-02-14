@@ -40,6 +40,7 @@
 		A0EE558B25D9914700A9D38A /* MockSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE558A25D9914700A9D38A /* MockSearchViewController.swift */; };
 		A0EE558D25D9932D00A9D38A /* MockServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE558C25D9932D00A9D38A /* MockServiceManager.swift */; };
 		A0EE558F25D9987700A9D38A /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE558E25D9987700A9D38A /* MockURLSession.swift */; };
+		A0EE559125D9ACF700A9D38A /* MockPhotoCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE559025D9ACF700A9D38A /* MockPhotoCacheManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		A0EE558A25D9914700A9D38A /* MockSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchViewController.swift; sourceTree = "<group>"; };
 		A0EE558C25D9932D00A9D38A /* MockServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockServiceManager.swift; sourceTree = "<group>"; };
 		A0EE558E25D9987700A9D38A /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		A0EE559025D9ACF700A9D38A /* MockPhotoCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPhotoCacheManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +281,7 @@
 				A0EE558A25D9914700A9D38A /* MockSearchViewController.swift */,
 				A0EE558C25D9932D00A9D38A /* MockServiceManager.swift */,
 				A0EE558E25D9987700A9D38A /* MockURLSession.swift */,
+				A0EE559025D9ACF700A9D38A /* MockPhotoCacheManager.swift */,
 			);
 			path = MockObjects;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				A0EE558225D96BF500A9D38A /* ServiceManagerTests.swift in Sources */,
 				A0EE557C25D96BB800A9D38A /* PhotoServiceManagerTests.swift in Sources */,
 				A0EE558F25D9987700A9D38A /* MockURLSession.swift in Sources */,
+				A0EE559125D9ACF700A9D38A /* MockPhotoCacheManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

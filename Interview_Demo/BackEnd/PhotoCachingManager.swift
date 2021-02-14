@@ -9,7 +9,12 @@
 import Foundation
 import UIKit
 
-final class PhotoCachingManager {
+protocol PhotoCachingManagerInterface {
+    func getImage(key: String) -> UIImage?
+    func saveImage(image: UIImage, forKey key: String)
+}
+
+final class PhotoCachingManager: PhotoCachingManagerInterface {
     
     static let shared = PhotoCachingManager()
     private(set) var cache: NSCache<AnyObject,AnyObject> = NSCache()

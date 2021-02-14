@@ -50,6 +50,42 @@ class PhotoServiceManagerTests: XCTestCase {
         XCTAssertTrue(mockServiceManager.isDownloadReqCalled)
     }
     
+    func test_downloadPhotoWithCache() {
+        let mockServiceManager = MockServiceManager()
+        let mockCache = MockPhotoCacheManager()
+        photoServiceManger = PhotoServiceManager(serviceManager: mockServiceManager,
+                                                 cacheManager: mockCache)
+        
+        photoServiceManger.downloadPhoto(imageView: UIImageView(),
+                                         photoURL: "cacheKey") { (image, error) in
+                                            XCTAssertNotNil(image)
+                                            XCTAssertNil(error)
+        }
+        
+        XCTAssertTrue(mockCache.isGetImageCalled)
+    }
+    
+    func test_downloadPhotoCheckIfExists() {
+        let mockServiceManager = MockServiceManager()
+        let mockCache = MockPhotoCacheManager()
+        let mockImageView = UIImageView()
+        photoServiceManger = PhotoServiceManager(serviceManager: mockServiceManager,
+                                                 cacheManager: mockCache)
+        
+        photoServiceManger.downloadPhoto(imageView: mockImageView,
+                                         photoURL: "photoURL") { (image, error) in
+                                            XCTAssertNotNil(image)
+                                            XCTAssertNil(error)
+        }
+        
+        var callBackCounter = 0
+        photoServiceManger.downloadPhoto(imageView: mockImageView,
+                                         photoURL: "photoURL") { (image, error) in
+                                            callBackCounter += 1
+        }
+        XCTAssertEqual(callBackCounter, 0)
+    }
+    
     func test_downloadPhotoFailure() {
         let mockServiceManager = MockServiceManager()
         mockServiceManager.mockError = true
