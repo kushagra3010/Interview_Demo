@@ -21,6 +21,6 @@ protocol ServiceManagerInterface {
     
     func getRequest(req: ServiceRequestModel , completionBlock: @escaping ((_ res: ServiceResponseModel?, _ error: Error?) -> Void))
     
-    func downloadRequest(req: ServiceRequestModel, completionBlock: @escaping ((_ res: ServiceResponseModel?, _ error: Error?) -> Void))
+    func downloadRequest(req: ServiceRequestModel, completionBlock: @escaping ((ServiceResponseModel?, Error?) -> Void)) -> URLSessionTask
     
 }

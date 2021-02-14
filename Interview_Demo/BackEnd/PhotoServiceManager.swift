@@ -13,6 +13,8 @@ final class PhotoServiceManager : PhotoServiceInterface {
     
     private let serviceManager: ServiceManagerInterface
     private let imageCacheManager: PhotoCachingManager = PhotoCachingManager.shared
+    private(set) var imageViewToTask: [UIImageView: (url: String,task: URLSessionTask)] = [:]
+    private let imageDictionaryLock = NSLock()
     
     init(serviceManager: ServiceManagerInterface = ServiceManager.shared) {
         self.serviceManager = serviceManager
@@ -45,7 +47,9 @@ final class PhotoServiceManager : PhotoServiceInterface {
         }
     }
     
-    func downloadPhoto(photoURL: String, completionBlock: @escaping ((_ image: UIImage?, _ error: Error?) -> Void)) {
+    func downloadPhoto(imageView: UIImageView,
+                       photoURL: String,
+                       completionBlock: @escaping ((_ image: UIImage?, _ error: Error?) -> Void)) {
         
         guard let cachedImage = self.imageCacheManager.getImage(key: photoURL) else {
             
@@ -57,18 +61,57 @@ final class PhotoServiceManager : PhotoServiceInterface {
             }
             let request = URLRequest(url: url)
             let serReq = ServiceRequestModel(request: request)
-            
-            self.serviceManager.downloadRequest(req: serReq) { (response, error) in
-                if let responseData = response?.data,
-                    let image = UIImage(data: responseData){
-                    self.imageCacheManager.saveImage(image: image, forKey: photoURL)
-                    completionBlock(image,error)
-                } else {
-                    completionBlock(nil, error)
+            if !checkIfTaskExists(imageView: imageView, url: photoURL) {
+                let downloadTask = self.serviceManager.downloadRequest(req: serReq) { (response, error) in
+                    self.removeImageViewTasks(imageView: imageView)
+                    if let responseData = response?.data,
+                        let image = UIImage(data: responseData){
+                        self.imageCacheManager.saveImage(image: image, forKey: photoURL)
+                        completionBlock(image,error)
+                    } else {
+                        completionBlock(nil, error)
+                    }
                 }
+                self.addImageViewTasks(imageView: imageView, touple: (photoURL,downloadTask))
             }
             return
         }
+        if let touple = self.imageViewToTask[imageView] {
+            touple.task.cancel()
+            self.removeImageViewTasks(imageView: imageView)
+        }
         completionBlock(cachedImage, nil)
+    }
+    
+    private func removeImageViewTasks(imageView: UIImageView) {
+        
+        imageDictionaryLock.lock()
+        self.imageViewToTask.removeValue(forKey: imageView)
+        imageDictionaryLock.unlock()
+    }
+    
+    private func addImageViewTasks(imageView: UIImageView, touple: (url: String,task: URLSessionTask)) {
+        
+        imageDictionaryLock.lock()
+        self.imageViewToTask[imageView] = touple
+        imageDictionaryLock.unlock()
+    }
+    
+    private func getImageViewTask(imageView: UIImageView) -> (url: String,task: URLSessionTask)? {
+        
+        imageDictionaryLock.lock()
+        let touple = self.imageViewToTask[imageView]
+        imageDictionaryLock.unlock()
+        return touple
+        
+    }
+    
+    func checkIfTaskExists(imageView: UIImageView, url: String) -> Bool {
+        let touple = self.getImageViewTask(imageView: imageView)
+        if touple?.url == url {
+            return true
+        } else {
+            return false
+        }
     }
 }

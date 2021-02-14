@@ -8,3 +8,6 @@
 
 "searchtitle" = "Search Photos";
 "noContentText" = "No Content available for this search term please try search again";
+"okButtonTitle" = "OK";
+"errorAlertTitle" = "Error";
+"cancelButtonTitle" = "Cancel";

@@ -8,12 +8,20 @@
 
 import UIKit
 
-class SearchViewCollectionCell: UICollectionViewCell {
+typealias CancelButtonCallBack = ((_ photo: PhotoViewModel) -> Void)
+
+final class SearchViewCollectionCell: UICollectionViewCell {
 
     weak var imageView: UIImageView?
+    weak var indicator: UIActivityIndicatorView?
+    weak var progressView: UIStackView?
+    let localize: SearchViewLocalizeStrings = SearchViewLocalizeStrings()
+    var model : PhotoViewModel?
     
-    private struct Constants {
+    struct Constants {
         static let imageMargin: CGFloat = 5.0
+        static let progressStackSpacing: CGFloat = 5.0
+        static let placeHolderImageName = "placeholder"
     }
     
     required init?(coder: NSCoder) {
@@ -38,22 +46,40 @@ class SearchViewCollectionCell: UICollectionViewCell {
         ])
         
         self.imageView = newImageView
-        self.imageView?.backgroundColor = .red
-        self.contentView.backgroundColor = .yellow
         
+        let progressView = UIStackView()
+        progressView.spacing = Constants.progressStackSpacing
+        progressView.axis = .vertical
+
+        let indicator = UIActivityIndicatorView(style: .medium)
+        self.indicator = indicator
+        
+        progressView.addArrangedSubview(indicator)
+        
+        self.contentView.addSubview(progressView)
+        progressView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.contentView.centerYAnchor.constraint(equalTo: progressView.centerYAnchor, constant: 0),
+            self.contentView.leadingAnchor.constraint(equalTo: progressView.leadingAnchor, constant: -10),
+            self.contentView.trailingAnchor.constraint(equalTo: progressView.trailingAnchor, constant: 10),
+        ])
+        progressView.isHidden = true
+        
+        self.progressView = progressView
     }
-    
     
     override func prepareForReuse() {
-        imageView?.image = nil
+        imageView?.image = UIImage(named: Constants.placeHolderImageName)
+        self.model = nil
     }
     
-    var model: PhotoViewModel? {
-        didSet {
-            if let model = model {
-                imageView?.image = nil
-                
-            }
-        }
+    func startProgress() {
+        self.progressView?.isHidden = false
+        self.indicator?.startAnimating()
+    }
+    
+    func stopProgress() {
+        self.progressView?.isHidden = true
+        self.indicator?.stopAnimating()
     }
 }

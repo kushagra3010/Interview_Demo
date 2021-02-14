@@ -19,7 +19,7 @@ final class SearchViewInteractor: SearchViewIneractorable {
     }
     
     func getPhotos(searchTerm: String?) {
-        self.service.getPhotos(searchTerm: searchTerm ?? "nature") { (photos, error) in
+        self.service.getPhotos(searchTerm: searchTerm ?? AppConstants.defaultSearchTerm) { (photos, error) in
             
             if let newError = error {
                 self.presenter?.showError(error: newError)
@@ -32,23 +32,19 @@ final class SearchViewInteractor: SearchViewIneractorable {
         }
     }
     
-    func downloadImage(imageURL: String, callBack: @escaping ((_ image: UIImage?) -> Void)) {
+    func downloadImage(imageView: UIImageView,
+                       imageURL: String,
+                       callBack: @escaping ((_ image: UIImage?) -> Void)) {
         
-        self.service.downloadPhoto(photoURL: imageURL) { (image, error) in
+        self.service.downloadPhoto(imageView: imageView,
+                                   photoURL: imageURL) { (image, error) in
             if let _ = error {
                 callBack(nil)
             } else {
                 callBack(image)
             }
-            
         }
     }
-    
-    func cancelImageDownload(photo: PhotoViewModel) {
-        
-    }
-    
-    
 }
 
 

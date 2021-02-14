@@ -18,7 +18,7 @@ final class SearchViewController: UIViewController, SearchViewControllable {
     
     private let numberOfColumns: CGFloat = 3
     private let interactor: SearchViewIneractorable
-    private let localize: SearchViewLocalizeStrings = SearchViewLocalizeStrings()
+    private let localize: SearchViewLocalizeStrings
     
     private(set) var searchBarController: UISearchController? = nil
     private(set) weak var collectionView: UICollectionView? = nil
@@ -27,10 +27,13 @@ final class SearchViewController: UIViewController, SearchViewControllable {
     
     private struct SearchViewConstants {
         static let noContentLabelFontSize: CGFloat = 20.0
+        static let searchViewCellName = "SearchViewCollectionCell"
     }
     
-    init(interactor: SearchViewIneractorable) {
+    init(interactor: SearchViewIneractorable,
+         localization: SearchViewLocalizeStrings = SearchViewLocalizeStrings()) {
         self.interactor = interactor
+        self.localize = localization
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -43,8 +46,13 @@ final class SearchViewController: UIViewController, SearchViewControllable {
         
         self.setupUI()
         self.startProgress()
-        self.startProgress()
         self.interactor.getPhotos(searchTerm: nil)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        
+        PhotoCachingManager.shared.flushCache()
     }
     
     private func setupUI() {
@@ -94,10 +102,9 @@ final class SearchViewController: UIViewController, SearchViewControllable {
         
         
         let collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
         collectionView.backgroundColor = UIColor.white
-       
-        collectionView.register(SearchViewCollectionCell.self, forCellWithReuseIdentifier: "SearchViewCollectionCell")
+        collectionView.register(SearchViewCollectionCell.self,
+                                forCellWithReuseIdentifier: SearchViewConstants.searchViewCellName)
         collectionView.dataSource = self
         collectionView.delegate = self
 
@@ -150,6 +157,18 @@ final class SearchViewController: UIViewController, SearchViewControllable {
     
     func showError(error: Error) {
         //Handle error
+        DispatchQueue.main.async {
+            self.stopProgress()
+            let alert = UIAlertController(title: self.localize.errorAlertTitle,
+                                          message: error.localizedDescription,
+                                          preferredStyle: .alert)
+            let action = UIAlertAction(title: self.localize.alertOkButtonTitle,
+                                       style: .default) { _ in
+            }
+            alert.addAction(action)
+            self.present(alert, animated: true) {
+            }
+        }
     }
 
 }
@@ -160,7 +179,7 @@ extension SearchViewController: UISearchBarDelegate, UISearchControllerDelegate 
         guard let text = searchBar.text, text.count > 1 else {
             return
         }
-        
+        self.startProgress()
         self.interactor.getPhotos(searchTerm: text)
         searchBarController?.searchBar.resignFirstResponder()
     }
@@ -175,7 +194,7 @@ extension SearchViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchViewCollectionCell",
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchViewConstants.searchViewCellName,
                                                       for: indexPath) as! SearchViewCollectionCell
         cell.imageView?.image = nil
         return cell
@@ -187,20 +206,21 @@ extension SearchViewController: UICollectionViewDataSource {
         }
         
         let model = viewModel.photos[indexPath.row]
+        cell.startProgress()
         cell.model = model
-        self.interactor.downloadImage(imageURL: model.photoURL) { (image) in
-            DispatchQueue.main.async {
-                if let newImage = image {
-                    cell.imageView?.image = newImage
-                } else {
-                    cell.imageView?.image = UIImage(named: "placeholder")
+        if let imageView = cell.imageView {
+            self.interactor.downloadImage(imageView: imageView,
+                                          imageURL: model.photoURL) { (image) in
+                DispatchQueue.main.async {
+                    cell.stopProgress()
+                    if let newImage = image {
+                        cell.imageView?.image = newImage
+                    } else {
+                        cell.imageView?.image = UIImage(named: SearchViewCollectionCell.Constants.placeHolderImageName)
+                    }
                 }
             }
         }
-        
-//        if indexPath.row == (viewModel.photoArray.count - 10) {
-//            loadNextPage()
-//        }
     }
 }
 

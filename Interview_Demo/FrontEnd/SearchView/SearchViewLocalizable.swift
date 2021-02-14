@@ -18,4 +18,11 @@ struct SearchViewLocalizeStrings {
         return LocalizationUtilty.localizeString(key: "noContentText")
     }
     
+    var alertOkButtonTitle: String {
+        return LocalizationUtilty.localizeString(key: "okButtonTitle")
+    }
+    
+    var errorAlertTitle: String {
+        return LocalizationUtilty.localizeString(key: "errorAlertTitle")
+    }
 }

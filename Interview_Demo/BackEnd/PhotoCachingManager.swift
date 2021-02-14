@@ -31,5 +31,7 @@ final class PhotoCachingManager {
         self.cache.setObject(image as AnyObject, forKey: key as AnyObject)
     }
     
-    
+    func flushCache() {
+        self.cache.removeAllObjects()
+    }
 }

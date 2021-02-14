@@ -22,6 +22,7 @@ protocol SearchViewPresentable {
 
 protocol SearchViewIneractorable {
     func getPhotos(searchTerm: String?)
-    func downloadImage(imageURL: String, callBack: @escaping ((_ image: UIImage?) -> Void))
-    func cancelImageDownload(photo: PhotoViewModel)
+    func downloadImage(imageView: UIImageView,
+                       imageURL: String,
+                       callBack: @escaping ((_ image: UIImage?) -> Void))
 }

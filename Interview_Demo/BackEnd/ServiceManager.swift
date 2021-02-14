@@ -26,7 +26,7 @@ final class ServiceManager: ServiceManagerInterface {
         task.resume()
     }
     
-    func downloadRequest(req: ServiceRequestModel, completionBlock: @escaping ((ServiceResponseModel?, Error?) -> Void)) {
+    func downloadRequest(req: ServiceRequestModel, completionBlock: @escaping ((ServiceResponseModel?, Error?) -> Void)) -> URLSessionTask {
         let session = URLSession.shared
         let task = session.downloadTask(with: req.request) { (fileUrl, response, error) in
             do {
@@ -46,5 +46,6 @@ final class ServiceManager: ServiceManagerInterface {
             }
         }
         task.resume()
+        return task
     }
 }

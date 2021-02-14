@@ -19,7 +19,7 @@ final class ServiceConstants {
     
     static let apiKey = "e69b9fa4f366059007461367a7546a7e"
     static let perPage = 60
-    static let searchURL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=\(ServiceConstants.apiKey)&format=json&nojsoncallback=1&safe_search=1&per_page=\(ServiceConstants.perPage)&text=%@"
+    static let searchURL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=\(ServiceConstants.apiKey)&format=json&nojsoncallback=1&safe_search=1&text=%@"
     
     static let defaultErrorMessage = "Something went wrong, please try again"
 }

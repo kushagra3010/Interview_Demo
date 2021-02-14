@@ -10,4 +10,6 @@ import Foundation
 
 final class AppConstants {
     
+    static let defaultSearchTerm = "nature"
+    
 }
