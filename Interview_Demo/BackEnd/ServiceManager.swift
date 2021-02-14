@@ -11,14 +11,15 @@ import Foundation
 final class ServiceManager: ServiceManagerInterface {
     
     static let shared = ServiceManager()
+    private let session: URLSession
     
-    private init() {
+    init(session: URLSession = URLSession.shared) {
         //Initialization
+        self.session = session
     }
 
     func getRequest(req: ServiceRequestModel, completionBlock: @escaping ((ServiceResponseModel?, Error?) -> Void)) {
-        let session = URLSession.shared
-        let task = session.dataTask(with: req.request) { (data, response, error) in
+        let task = self.session.dataTask(with: req.request) { (data, response, error) in
             let httpResponse = response as? HTTPURLResponse
             let responseModel = ServiceResponseModel(data: data,
                                                      statusCode: httpResponse?.statusCode ?? 0)
@@ -28,8 +29,7 @@ final class ServiceManager: ServiceManagerInterface {
     }
     
     func downloadRequest(req: ServiceRequestModel, completionBlock: @escaping ((ServiceResponseModel?, Error?) -> Void)) -> URLSessionTask {
-        let session = URLSession.shared
-        let task = session.downloadTask(with: req.request) { (fileUrl, response, error) in
+        let task = self.session.downloadTask(with: req.request) { (fileUrl, response, error) in
             do {
                 guard let url = fileUrl else {
                     completionBlock(nil, NSError(domain: "",

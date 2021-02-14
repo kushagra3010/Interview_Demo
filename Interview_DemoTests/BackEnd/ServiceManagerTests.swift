@@ -7,27 +7,77 @@
 //
 
 import XCTest
+@testable import Interview_Demo
 
 class ServiceManagerTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    private(set) var serviceManager: ServiceManager!
+    private(set) var mockSession: MockUrlSession!
+    
+    override func setUp() {
+        mockSession = MockUrlSession()
     }
 
     func test_getRequestSucess() {
         
+        serviceManager = ServiceManager(session: mockSession)
+        
+        let data = Data(bytes: [1, 2, 3, 1])
+        mockSession.data = data
+
+        let fileurl = URL(fileURLWithPath: "url")
+        
+        let request = ServiceRequestModel(request: URLRequest(url: fileurl))
+        serviceManager.getRequest(req: request) { (response, error) in
+            XCTAssertNotNil(response?.data)
+            XCTAssertNil(error)
+        }
+        XCTAssertTrue(mockSession.isDataTaskCalled)
+        XCTAssertTrue(mockSession.mockDataTask?.isResumeMethodCalled ?? false)
+        
     }
     
     func test_getRequestFailure() {
+        mockSession.mockError = true
+        serviceManager = ServiceManager(session: mockSession)
+
+        let fileurl = URL(fileURLWithPath: "url")
         
+        let request = ServiceRequestModel(request: URLRequest(url: fileurl))
+        serviceManager.getRequest(req: request) { (response, error) in
+            XCTAssertNil(response?.data)
+            XCTAssertNotNil(error)
+        }
+        XCTAssertTrue(mockSession.isDataTaskCalled)
+        XCTAssertTrue(mockSession.mockDataTask?.isResumeMethodCalled ?? false)
     }
     
     func test_downloadRequestSucess() {
+        serviceManager = ServiceManager(session: mockSession)
+
+        let fileurl = URL(fileURLWithPath: "url")
         
+        let request = ServiceRequestModel(request: URLRequest(url: fileurl))
+        serviceManager.downloadRequest(req: request) { (response, error) in
+            XCTAssertNotNil(error)
+        }
+        XCTAssertTrue(mockSession.isDownloadTaskCalled)
+        XCTAssertTrue(mockSession.mockDownloadTask?.isResumeMethodCalled ?? false)
     }
     
     func test_downloadRequestFailure() {
+        mockSession.mockError = true
+        serviceManager = ServiceManager(session: mockSession)
+
+        let fileurl = URL(fileURLWithPath: "url")
         
+        let request = ServiceRequestModel(request: URLRequest(url: fileurl))
+        serviceManager.downloadRequest(req: request) { (response, error) in
+            XCTAssertNil(response?.data)
+            XCTAssertNotNil(error)
+        }
+        XCTAssertTrue(mockSession.isDownloadTaskCalled)
+        XCTAssertTrue(mockSession.mockDownloadTask?.isResumeMethodCalled ?? false)
     }
 
 }

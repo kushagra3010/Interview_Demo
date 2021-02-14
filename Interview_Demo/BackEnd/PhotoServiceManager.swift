@@ -108,7 +108,7 @@ final class PhotoServiceManager : PhotoServiceInterface {
         
     }
     
-    func checkIfTaskExists(imageView: UIImageView, url: String) -> Bool {
+    private func checkIfTaskExists(imageView: UIImageView, url: String) -> Bool {
         let touple = self.getImageViewTask(imageView: imageView)
         if touple?.url == url {
             return true

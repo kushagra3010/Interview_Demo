@@ -35,5 +35,14 @@ final class MockPhotoService : PhotoServiceInterface {
     
     func downloadPhoto(imageView: UIImageView, photoURL: String, completionBlock: @escaping ((UIImage?, Error?) -> Void)) {
         self.isDownloadPhotoCalled = true
+        
+        if mockError {
+            let error = NSError(domain: "",
+                                code: 0,
+                                userInfo: [NSLocalizedDescriptionKey: "This is mock error"])
+            completionBlock(nil, error)
+        } else {
+            completionBlock(UIImage(), nil)
+        }
     }
 }

@@ -7,19 +7,29 @@
 //
 
 import XCTest
+@testable import Interview_Demo
 
 class SearchViewPresenterTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+    private(set) var presenter: SearchViewPresenter!
     
     func test_updatePhotos() {
+        let mockController = MockSearchViewController()
+        presenter = SearchViewPresenter(controller: mockController)
         
+        presenter.updatePhotos(photos: [])
+        
+        XCTAssertTrue(mockController.isUpdatePhotosCalled)
     }
     
-    func test_showErro() {
+    func test_showError() {
+        let mockController = MockSearchViewController()
+        presenter = SearchViewPresenter(controller: mockController)
         
+        presenter.showError(error: NSError(domain: "",
+                                           code: 0,
+                                           userInfo: nil))
+        XCTAssertTrue(mockController.isShowErrorCalled)        
     }
 
 }
