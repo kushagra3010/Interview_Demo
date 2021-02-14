@@ -14,4 +14,8 @@ struct SearchViewLocalizeStrings {
         return LocalizationUtilty.localizeString(key: "searchtitle")
     }
     
+    var noContentText: String {
+        return LocalizationUtilty.localizeString(key: "noContentText")
+    }
+    
 }

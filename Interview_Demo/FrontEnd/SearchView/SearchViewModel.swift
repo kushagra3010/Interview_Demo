@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 
 struct SearchViewModel {
-    let photos: [PhotoViewModel]
+    var photos: [PhotoViewModel]
     let searchTerm: String? = nil
 }
 
 struct PhotoViewModel {
     let photoName: String
-    let photoImage: UIImage
+    let photoURL: String
 }

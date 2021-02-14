@@ -23,7 +23,6 @@
 		A0CA5A7525D80075006DB725 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CA5A7425D80075006DB725 /* AppConstants.swift */; };
 		A0CA5A7725D800A7006DB725 /* ServiceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CA5A7625D800A7006DB725 /* ServiceConstants.swift */; };
 		A0CA5A7A25D80C66006DB725 /* SearchViewLocalizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CA5A7925D80C66006DB725 /* SearchViewLocalizable.swift */; };
-		A0CA5A8425D80E31006DB725 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0CA5A8025D80E31006DB725 /* Main.storyboard */; };
 		A0CA5A8525D80E31006DB725 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0CA5A8225D80E31006DB725 /* LaunchScreen.storyboard */; };
 		A0CA5A8825D80E3C006DB725 /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = A0CA5A8625D80E3C006DB725 /* Localization.strings */; };
 		A0CA5A8A25D80FC7006DB725 /* LocalizationUtilty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CA5A8925D80FC7006DB725 /* LocalizationUtilty.swift */; };
@@ -31,6 +30,8 @@
 		A0EE557225D869DB00A9D38A /* PhotoServiceInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE557125D869DB00A9D38A /* PhotoServiceInterface.swift */; };
 		A0EE557425D869F300A9D38A /* PhotoServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE557325D869F300A9D38A /* PhotoServiceManager.swift */; };
 		A0EE557625D872F700A9D38A /* SearchResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE557525D872F700A9D38A /* SearchResultModel.swift */; };
+		A0EE557825D92C0700A9D38A /* SearchViewConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE557725D92C0700A9D38A /* SearchViewConfigurator.swift */; };
+		A0EE557A25D936EB00A9D38A /* PhotoCachingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE557925D936EB00A9D38A /* PhotoCachingManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +74,6 @@
 		A0CA5A7425D80075006DB725 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		A0CA5A7625D800A7006DB725 /* ServiceConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceConstants.swift; sourceTree = "<group>"; };
 		A0CA5A7925D80C66006DB725 /* SearchViewLocalizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewLocalizable.swift; sourceTree = "<group>"; };
-		A0CA5A8125D80E31006DB725 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A0CA5A8325D80E31006DB725 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0CA5A8725D80E3C006DB725 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localization.strings; sourceTree = "<group>"; };
 		A0CA5A8925D80FC7006DB725 /* LocalizationUtilty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationUtilty.swift; sourceTree = "<group>"; };
@@ -81,6 +81,8 @@
 		A0EE557125D869DB00A9D38A /* PhotoServiceInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoServiceInterface.swift; sourceTree = "<group>"; };
 		A0EE557325D869F300A9D38A /* PhotoServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoServiceManager.swift; sourceTree = "<group>"; };
 		A0EE557525D872F700A9D38A /* SearchResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultModel.swift; sourceTree = "<group>"; };
+		A0EE557725D92C0700A9D38A /* SearchViewConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewConfigurator.swift; sourceTree = "<group>"; };
+		A0EE557925D936EB00A9D38A /* PhotoCachingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCachingManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 				A0CA5A7625D800A7006DB725 /* ServiceConstants.swift */,
 				A0EE557125D869DB00A9D38A /* PhotoServiceInterface.swift */,
 				A0EE557325D869F300A9D38A /* PhotoServiceManager.swift */,
+				A0EE557925D936EB00A9D38A /* PhotoCachingManager.swift */,
 			);
 			path = BackEnd;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 				A0CA5A7225D7FEC7006DB725 /* SearchViewModel.swift */,
 				A0CA5A7925D80C66006DB725 /* SearchViewLocalizable.swift */,
 				A0EE556F25D85A3F00A9D38A /* SearchViewCollectionCell.swift */,
+				A0EE557725D92C0700A9D38A /* SearchViewConfigurator.swift */,
 			);
 			path = SearchView;
 			sourceTree = "<group>";
@@ -221,7 +225,6 @@
 			children = (
 				A0CA5A8225D80E31006DB725 /* LaunchScreen.storyboard */,
 				A0CA5A8625D80E3C006DB725 /* Localization.strings */,
-				A0CA5A8025D80E31006DB725 /* Main.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -352,7 +355,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0CA5A8425D80E31006DB725 /* Main.storyboard in Resources */,
 				A0CA5A8825D80E3C006DB725 /* Localization.strings in Resources */,
 				A0CA5A8525D80E31006DB725 /* LaunchScreen.storyboard in Resources */,
 				A01876D425D71105008430C6 /* Assets.xcassets in Resources */,
@@ -380,6 +382,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0EE557825D92C0700A9D38A /* SearchViewConfigurator.swift in Sources */,
 				A078917825D7F57B0037BFA4 /* SearchViewController.swift in Sources */,
 				A01876CB25D710CC008430C6 /* AppDelegate.swift in Sources */,
 				A0EE557625D872F700A9D38A /* SearchResultModel.swift in Sources */,
@@ -393,6 +396,7 @@
 				A078918025D7FB1E0037BFA4 /* PhotoModel.swift in Sources */,
 				A078918425D7FB870037BFA4 /* ServiceManager.swift in Sources */,
 				A0CA5A7325D7FEC7006DB725 /* SearchViewModel.swift in Sources */,
+				A0EE557A25D936EB00A9D38A /* PhotoCachingManager.swift in Sources */,
 				A078918225D7FB750037BFA4 /* ServiceManagerInterface.swift in Sources */,
 				A078917A25D7FA950037BFA4 /* SearchViewPresenter.swift in Sources */,
 				A01876CD25D710CC008430C6 /* SceneDelegate.swift in Sources */,
@@ -433,14 +437,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A0CA5A8025D80E31006DB725 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A0CA5A8125D80E31006DB725 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A0CA5A8225D80E31006DB725 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

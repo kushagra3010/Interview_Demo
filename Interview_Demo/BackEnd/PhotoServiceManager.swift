@@ -12,6 +12,7 @@ import UIKit
 final class PhotoServiceManager : PhotoServiceInterface {
     
     private let serviceManager: ServiceManagerInterface
+    private let imageCacheManager: PhotoCachingManager = PhotoCachingManager.shared
     
     init(serviceManager: ServiceManagerInterface = ServiceManager.shared) {
         self.serviceManager = serviceManager
@@ -44,7 +45,30 @@ final class PhotoServiceManager : PhotoServiceInterface {
         }
     }
     
-    func downloadPhoto(photo: PhotoModel, completionBlock: @escaping ((_ image: UIImage?, _ error: Error?) -> Void)) {
+    func downloadPhoto(photoURL: String, completionBlock: @escaping ((_ image: UIImage?, _ error: Error?) -> Void)) {
         
+        guard let cachedImage = self.imageCacheManager.getImage(key: photoURL) else {
+            
+            guard let url = URL(string: photoURL) else {
+                completionBlock(nil, NSError(domain: "",
+                                             code: 0,
+                                             userInfo: [NSLocalizedDescriptionKey: ServiceConstants.defaultErrorMessage]))
+                return
+            }
+            let request = URLRequest(url: url)
+            let serReq = ServiceRequestModel(request: request)
+            
+            self.serviceManager.downloadRequest(req: serReq) { (response, error) in
+                if let responseData = response?.data,
+                    let image = UIImage(data: responseData){
+                    self.imageCacheManager.saveImage(image: image, forKey: photoURL)
+                    completionBlock(image,error)
+                } else {
+                    completionBlock(nil, error)
+                }
+            }
+            return
+        }
+        completionBlock(cachedImage, nil)
     }
 }

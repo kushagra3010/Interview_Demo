@@ -21,6 +21,11 @@ final class SearchViewPresenter: SearchViewPresentable {
     }
     
     func updateSearchResults(photos: [PhotoViewModel]) {
+        self.viewController.updatePhotos(photos: photos)
+    }
+    
+    func showError(error: Error) {
+        self.viewController.showError(error: error)
     }
     
 }

@@ -13,5 +13,7 @@ struct PhotoModel: Codable {
     let secret : String
     let server: String
     let title: String
-    let photoImageUrl: String?
+    var photoImageUrl: String {
+        "https://live.staticflickr.com/\(server)/\(id)_\(secret)_w.jpg"
+    }
 }

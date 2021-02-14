@@ -7,23 +7,41 @@
 //
 
 import Foundation
+import UIKit
 
 final class SearchViewInteractor: SearchViewIneractorable {
     
     private let service: PhotoServiceInterface
+    var presenter: SearchViewPresentable?
     
     init(service: PhotoServiceInterface) {
         self.service = service
     }
     
-    func getPhotos() {
-        self.service.getPhotos(searchTerm: "nature") { (photos, error) in
-            print("\(photos)")
+    func getPhotos(searchTerm: String?) {
+        self.service.getPhotos(searchTerm: searchTerm ?? "nature") { (photos, error) in
+            
+            if let newError = error {
+                self.presenter?.showError(error: newError)
+            } else {
+                let photosVMs = photos?.map({ (model) -> PhotoViewModel in
+                    PhotoViewModel(photoName: model.title, photoURL: model.photoImageUrl)
+                })
+                self.presenter?.updatePhotos(photos: photosVMs ?? [])
+            }
         }
     }
     
-    func getSearchResults(searchTerm: String) {
+    func downloadImage(imageURL: String, callBack: @escaping ((_ image: UIImage?) -> Void)) {
         
+        self.service.downloadPhoto(photoURL: imageURL) { (image, error) in
+            if let _ = error {
+                callBack(nil)
+            } else {
+                callBack(image)
+            }
+            
+        }
     }
     
     func cancelImageDownload(photo: PhotoViewModel) {

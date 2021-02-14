@@ -51,8 +51,8 @@ class SearchViewCollectionCell: UICollectionViewCell {
     var model: PhotoViewModel? {
         didSet {
             if let model = model {
-                imageView?.image = UIImage(named: "placeholder")
-//                imageView.downloadImage(model.imageURL)
+                imageView?.image = nil
+                
             }
         }
     }

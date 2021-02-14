@@ -12,5 +12,5 @@ import UIKit
 protocol PhotoServiceInterface {
     
     func getPhotos(searchTerm: String, completionBlock: @escaping ((_ photos: [PhotoModel]?, _ error: Error?) -> Void))
-    func downloadPhoto(photo: PhotoModel, completionBlock: @escaping ((_ image: UIImage?, _ error: Error?) -> Void))
+    func downloadPhoto(photoURL: String, completionBlock: @escaping ((_ image: UIImage?, _ error: Error?) -> Void))
 }
