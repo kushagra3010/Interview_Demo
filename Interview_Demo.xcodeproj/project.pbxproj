@@ -32,6 +32,11 @@
 		A0EE557625D872F700A9D38A /* SearchResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE557525D872F700A9D38A /* SearchResultModel.swift */; };
 		A0EE557825D92C0700A9D38A /* SearchViewConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE557725D92C0700A9D38A /* SearchViewConfigurator.swift */; };
 		A0EE557A25D936EB00A9D38A /* PhotoCachingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE557925D936EB00A9D38A /* PhotoCachingManager.swift */; };
+		A0EE557C25D96BB800A9D38A /* PhotoServiceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE557B25D96BB800A9D38A /* PhotoServiceManagerTests.swift */; };
+		A0EE557E25D96BCE00A9D38A /* SearchViewInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE557D25D96BCE00A9D38A /* SearchViewInteractorTests.swift */; };
+		A0EE558025D96BDF00A9D38A /* SearchViewPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE557F25D96BDF00A9D38A /* SearchViewPresenterTests.swift */; };
+		A0EE558225D96BF500A9D38A /* ServiceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE558125D96BF500A9D38A /* ServiceManagerTests.swift */; };
+		A0EE558525D96FBD00A9D38A /* MockPhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EE558425D96FBD00A9D38A /* MockPhotoService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +88,11 @@
 		A0EE557525D872F700A9D38A /* SearchResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultModel.swift; sourceTree = "<group>"; };
 		A0EE557725D92C0700A9D38A /* SearchViewConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewConfigurator.swift; sourceTree = "<group>"; };
 		A0EE557925D936EB00A9D38A /* PhotoCachingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCachingManager.swift; sourceTree = "<group>"; };
+		A0EE557B25D96BB800A9D38A /* PhotoServiceManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoServiceManagerTests.swift; sourceTree = "<group>"; };
+		A0EE557D25D96BCE00A9D38A /* SearchViewInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewInteractorTests.swift; sourceTree = "<group>"; };
+		A0EE557F25D96BDF00A9D38A /* SearchViewPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewPresenterTests.swift; sourceTree = "<group>"; };
+		A0EE558125D96BF500A9D38A /* ServiceManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManagerTests.swift; sourceTree = "<group>"; };
+		A0EE558425D96FBD00A9D38A /* MockPhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPhotoService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +159,7 @@
 		A01876E025D7110B008430C6 /* Interview_DemoTests */ = {
 			isa = PBXGroup;
 			children = (
+				A0EE558325D96FAF00A9D38A /* MockObjects */,
 				A078917525D7F5500037BFA4 /* BackEnd */,
 				A078917625D7F5500037BFA4 /* FrontEnd */,
 				A01876E125D7110B008430C6 /* Interview_DemoTests.swift */,
@@ -232,6 +243,8 @@
 		A078917525D7F5500037BFA4 /* BackEnd */ = {
 			isa = PBXGroup;
 			children = (
+				A0EE557B25D96BB800A9D38A /* PhotoServiceManagerTests.swift */,
+				A0EE558125D96BF500A9D38A /* ServiceManagerTests.swift */,
 			);
 			path = BackEnd;
 			sourceTree = "<group>";
@@ -247,8 +260,18 @@
 		A0CA5A7825D804ED006DB725 /* SearchView */ = {
 			isa = PBXGroup;
 			children = (
+				A0EE557D25D96BCE00A9D38A /* SearchViewInteractorTests.swift */,
+				A0EE557F25D96BDF00A9D38A /* SearchViewPresenterTests.swift */,
 			);
 			path = SearchView;
+			sourceTree = "<group>";
+		};
+		A0EE558325D96FAF00A9D38A /* MockObjects */ = {
+			isa = PBXGroup;
+			children = (
+				A0EE558425D96FBD00A9D38A /* MockPhotoService.swift */,
+			);
+			path = MockObjects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,6 +432,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0EE558525D96FBD00A9D38A /* MockPhotoService.swift in Sources */,
+				A0EE557E25D96BCE00A9D38A /* SearchViewInteractorTests.swift in Sources */,
+				A0EE558025D96BDF00A9D38A /* SearchViewPresenterTests.swift in Sources */,
+				A0EE558225D96BF500A9D38A /* ServiceManagerTests.swift in Sources */,
+				A0EE557C25D96BB800A9D38A /* PhotoServiceManagerTests.swift in Sources */,
 				A01876E225D7110B008430C6 /* Interview_DemoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

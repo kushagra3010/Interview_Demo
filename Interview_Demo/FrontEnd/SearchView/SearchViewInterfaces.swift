@@ -16,7 +16,6 @@ protocol SearchViewControllable: class {
 
 protocol SearchViewPresentable {
     func updatePhotos(photos: [PhotoViewModel])
-    func updateSearchResults(photos: [PhotoViewModel])
     func showError(error: Error)
 }
 

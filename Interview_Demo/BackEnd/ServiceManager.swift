@@ -13,6 +13,7 @@ final class ServiceManager: ServiceManagerInterface {
     static let shared = ServiceManager()
     
     private init() {
+        //Initialization
     }
 
     func getRequest(req: ServiceRequestModel, completionBlock: @escaping ((ServiceResponseModel?, Error?) -> Void)) {
