@@ -21,9 +21,11 @@ final class PhotoServiceManager : PhotoServiceInterface {
     }
     
     func getPhotos(searchTerm: String, completionBlock: @escaping ((_ photos: [PhotoModel]?, _ error: Error?) -> Void)) {
-        
-        let serviceURL = String(format: ServiceConstants.searchURL, searchTerm)
-        guard let url = URL(string: serviceURL) else {
+
+        let encodedSearchTerm = searchTerm.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? ""
+        let serviceURL = String(format: ServiceConstants.searchURL, encodedSearchTerm)
+        guard
+            let url = URL(string: serviceURL) else {
             completionBlock(nil, NSError(domain: "",
                                          code: 0,
                                          userInfo: [NSLocalizedDescriptionKey: ServiceConstants.defaultErrorMessage]))

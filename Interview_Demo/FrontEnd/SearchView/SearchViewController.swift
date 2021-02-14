@@ -176,7 +176,7 @@ final class SearchViewController: UIViewController, SearchViewControllable {
 extension SearchViewController: UISearchBarDelegate, UISearchControllerDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        guard let text = searchBar.text, text.count > 1 else {
+        guard let text = searchBar.text else {
             return
         }
         self.startProgress()
