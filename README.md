@@ -4,7 +4,7 @@ This application is use to search photos from Flickr APIs.
 
 ## Prerequisite
 
-- This app requires Mac OS Catalin (10.15.7) or higher
+- This app requires Mac OS Catalina (10.15.7) or higher
 - Minimum Xcode 11.4.1 required
 
 ## Getting Started :
