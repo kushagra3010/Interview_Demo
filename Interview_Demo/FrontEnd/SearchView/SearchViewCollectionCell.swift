@@ -15,7 +15,7 @@ final class SearchViewCollectionCell: UICollectionViewCell {
     weak var imageView: UIImageView?
     weak var indicator: UIActivityIndicatorView?
     weak var progressView: UIStackView?
-    let localize: SearchViewLocalizeStrings = SearchViewLocalizeStrings()
+    private let localize: SearchViewLocalizeStrings = SearchViewLocalizeStrings()
     var model : PhotoViewModel?
     
     struct Constants {

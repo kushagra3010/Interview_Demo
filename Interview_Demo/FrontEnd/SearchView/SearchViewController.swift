@@ -64,7 +64,7 @@ final class SearchViewController: UIViewController, SearchViewControllable {
         self.createIndicator()
     }
 
-    func createIndicator() {
+    private func createIndicator() {
         let indicator = UIActivityIndicatorView(style: .large)
         self.view.addSubview(indicator)
         indicator.translatesAutoresizingMaskIntoConstraints = false
@@ -76,12 +76,12 @@ final class SearchViewController: UIViewController, SearchViewControllable {
         self.activityIndicator = indicator
     }
     
-    func startProgress() {
+    private func startProgress() {
         self.activityIndicator?.isHidden = false
         self.activityIndicator?.startAnimating()
     }
     
-    func stopProgress() {
+    private func stopProgress() {
         self.activityIndicator?.isHidden = true
         self.activityIndicator?.stopAnimating()
     }
