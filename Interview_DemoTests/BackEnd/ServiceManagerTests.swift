@@ -22,7 +22,7 @@ class ServiceManagerTests: XCTestCase {
         
         serviceManager = ServiceManager(session: mockSession)
         
-        let data = Data(bytes: [1, 2, 3, 1])
+        let data = "mockData".data(using: .utf8)
         mockSession.data = data
 
         let fileurl = URL(fileURLWithPath: "url")
@@ -58,7 +58,7 @@ class ServiceManagerTests: XCTestCase {
         let fileurl = URL(fileURLWithPath: "url")
         
         let request = ServiceRequestModel(request: URLRequest(url: fileurl))
-        serviceManager.downloadRequest(req: request) { (response, error) in
+        _ = serviceManager.downloadRequest(req: request) { (response, error) in
             XCTAssertNotNil(error)
         }
         XCTAssertTrue(mockSession.isDownloadTaskCalled)
@@ -72,7 +72,7 @@ class ServiceManagerTests: XCTestCase {
         let fileurl = URL(fileURLWithPath: "url")
         
         let request = ServiceRequestModel(request: URLRequest(url: fileurl))
-        serviceManager.downloadRequest(req: request) { (response, error) in
+        _ = serviceManager.downloadRequest(req: request) { (response, error) in
             XCTAssertNil(response?.data)
             XCTAssertNotNil(error)
         }
